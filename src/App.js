@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import ShowIndex from './Components/ShowIndex';
+import Individual from './Components/Individual';
+import CreateRestaurant from './Components/CreateRestaurant';
 
 let baseURL = 'http://localhost:3003';
 
@@ -46,6 +48,7 @@ class App extends Component {
       <div className='App'>
         <h1>Restaraunts:</h1>
         {renderRestaurant}
+        <CreateRestaurant baseURL={baseURL} />
       </div>
     );
   }
