@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import ShowIndex from './Components/ShowIndex';
 
 let baseURL = 'http://localhost:3003';
 
