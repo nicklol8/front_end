@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import ShowIndex from './Components/ShowIndex';
 
 let baseURL = 'http://localhost:3003';
 
@@ -29,12 +30,7 @@ class App extends Component {
   showAllRestaurants() {
     const mapAllRestaurants = this.state.allRestaurants.map(
       (restaurant, index) => {
-        return (
-          <div>
-            <h1>{restaurant.name}</h1>
-            <img alt='' href={restaurant.image} />
-          </div>
-        );
+        return <ShowIndex restaurant={restaurant} key={index} />;
       }
     );
     return mapAllRestaurants;
