@@ -14,6 +14,7 @@ class App extends Component {
       allRestaurants: [],
       apiCheck: false
     };
+    this.deleteRestaurant = this.deleteRestaurant.bind(this)
   }
 
   async getAllRestaurants() {
@@ -32,10 +33,19 @@ class App extends Component {
   showAllRestaurants() {
     const mapAllRestaurants = this.state.allRestaurants.map(
       (restaurant, index) => {
-        return <ShowIndex restaurant={restaurant} key={index} />;
+        return <ShowIndex deleteRestaurant={this.deleteRestaurant} restaurant={restaurant} key={index} />;
       }
     );
     return mapAllRestaurants;
+  }
+  async deleteRestaurant(id) {
+    await axios.delete(`${baseURL}/restaurant/${id}`)
+    const filteredRestaurants = this.state.allRestaurants.filter((restaurant)=> {
+      return restaurant._id !== id
+    })
+  this.setState({
+    allRestaurants: filteredRestaurants
+  })
   }
 
   render() {
