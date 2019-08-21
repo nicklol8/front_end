@@ -15,6 +15,7 @@ class App extends Component {
       apiCheck: false
     };
     this.deleteRestaurant = this.deleteRestaurant.bind(this)
+    this.handleAddRestaurants = this.handleAddRestaurants.bind(this)
   }
 
   async getAllRestaurants() {
@@ -48,6 +49,15 @@ class App extends Component {
   })
   }
 
+  handleAddRestaurants(restaurant){
+    const copyRestaurants = [...this.state.allRestaurants];
+    copyRestaurants.unshift(restaurant);
+    this.setState({
+      allRestaurants: copyRestaurants
+      
+    })
+  }
+
   render() {
     const renderRestaurant = this.state.apiCheck ? (
       this.showAllRestaurants()
@@ -58,7 +68,7 @@ class App extends Component {
       <div className='App'>
         <h1>Restaraunts:</h1>
         {renderRestaurant}
-        <CreateRestaurant baseURL={baseURL} />
+        <CreateRestaurant handleAddRestaurants = {this.handleAddRestaurants} baseURL={baseURL} />
       </div>
     );
   }
