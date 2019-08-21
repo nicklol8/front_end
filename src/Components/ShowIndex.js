@@ -1,9 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 
 class ShowIndex extends React.Component {
   constructor() {
     super();
+  
   }
+
+
   render() {
     const { index, restaurant } = this.props;
     const allThemes = restaurant.theme.map((theme, index) => {
@@ -17,7 +21,10 @@ class ShowIndex extends React.Component {
           <p>{allThemes}</p>
           <p>{restaurant.url}</p>
           <p>{restaurant.phone}</p>
+          <button onClick={() => this.props.deleteRestaurant(restaurant._id)}> Delete</button>
         </div>
+       
+       
       </div>
     );
   }
