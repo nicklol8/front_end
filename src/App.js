@@ -15,6 +15,8 @@ class App extends Component {
       allRestaurants: [],
       apiCheck: false
     };
+    this.deleteRestaurant = this.deleteRestaurant.bind(this)
+    this.handleAddRestaurants = this.handleAddRestaurants.bind(this)
   }
 
   async getAllRestaurants() {
@@ -34,12 +36,31 @@ class App extends Component {
     const mapAllRestaurants = this.state.allRestaurants.map(
       (restaurant, index) => {
         return (
-          // <ShowIndex restaurant={restaurant} key={index} />
+          // <ShowIndex deleteRestaurant={this.deleteRestaurant} restaurant={restaurant} key={index} />
           <AppChild eachRestaurant={restaurant} key={index} />
         );
+
       }
     );
     return mapAllRestaurants;
+  }
+  async deleteRestaurant(id) {
+    await axios.delete(`${baseURL}/restaurant/${id}`)
+    const filteredRestaurants = this.state.allRestaurants.filter((restaurant)=> {
+      return restaurant._id !== id
+    })
+  this.setState({
+    allRestaurants: filteredRestaurants
+  })
+  }
+
+  handleAddRestaurants(restaurant){
+    const copyRestaurants = [...this.state.allRestaurants];
+    copyRestaurants.unshift(restaurant);
+    this.setState({
+      allRestaurants: copyRestaurants
+      
+    })
   }
 
   render() {
@@ -52,7 +73,7 @@ class App extends Component {
       <div className='App'>
         <h1>Restaraunts:</h1>
         {renderRestaurant}
-        <CreateRestaurant baseURL={baseURL} />
+        <CreateRestaurant handleAddRestaurants = {this.handleAddRestaurants} baseURL={baseURL} />
       </div>
     );
   }
