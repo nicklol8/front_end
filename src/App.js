@@ -4,6 +4,7 @@ import axios from 'axios';
 import ShowIndex from './Components/ShowIndex';
 import Individual from './Components/Individual';
 import CreateRestaurant from './Components/CreateRestaurant';
+import AppChild from './Components/AppChild';
 
 let baseURL = 'http://localhost:3003';
 
@@ -34,7 +35,11 @@ class App extends Component {
   showAllRestaurants() {
     const mapAllRestaurants = this.state.allRestaurants.map(
       (restaurant, index) => {
-        return <ShowIndex deleteRestaurant={this.deleteRestaurant} restaurant={restaurant} key={index} />;
+        return (
+          // <ShowIndex deleteRestaurant={this.deleteRestaurant} restaurant={restaurant} key={index} />
+          <AppChild eachRestaurant={restaurant} key={index} />
+        );
+
       }
     );
     return mapAllRestaurants;
