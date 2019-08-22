@@ -90,23 +90,20 @@ class AppChild extends React.Component {
 
     return (
       <div className='restaurants'>
-        {/* <h5>Edit Form</h5> */}
-        <h3>Name: {eachRestaurant.name}</h3>
-
-        <a>
-          <img src='{eachRestaurant.image}' />
-        </a>
-
-        <h3>{eachRestaurant.theme}</h3>
-        <h3>{eachRestaurant.address}</h3>
-        <h3>{eachRestaurant.menu.item1.item}</h3>
-        <h3>{eachRestaurant.menu.item1.price}</h3>
-        <h3>{eachRestaurant.menu.item2.item}</h3>
-        <h3>{eachRestaurant.menu.item2.price}</h3>
-        <h3>{eachRestaurant.menu.item3.item}</h3>
-        <h3>{eachRestaurant.menu.item3.price}</h3>
-        <h3>{eachRestaurant.url}</h3>
-        <h3>{eachRestaurant.phone}</h3>
+        <h3 className='menu'>Menu</h3>
+        <div className='item'>
+          <h3>{eachRestaurant.menu.item1.item}</h3>
+          <h3>Price:${eachRestaurant.menu.item1.price}</h3>
+        </div>
+        <div className='item'>
+          <h3>{eachRestaurant.menu.item2.item}</h3>
+          <h3>Price:${eachRestaurant.menu.item2.price}</h3>
+        </div>
+        <div className='item'>
+          <h3>{eachRestaurant.menu.item3.item}</h3>
+          <h3>Price:${eachRestaurant.menu.item3.price}</h3>
+        </div>
+        <br />
         <button onClick={() => this.handleEditButton(eachRestaurant)}>
           Edit
         </button>

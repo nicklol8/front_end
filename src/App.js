@@ -34,8 +34,9 @@ class App extends Component {
     const mapAllRestaurants = this.state.allRestaurants.map(
       (restaurant, index) => {
         return (
-          // <ShowIndex restaurant={restaurant} key={index} />
-          <AppChild eachRestaurant={restaurant} key={index} />
+          <div>
+            <ShowIndex restaurant={restaurant} key={index} />
+          </div>
         );
       }
     );
