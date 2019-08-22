@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from './Menu';
 
+
 class ShowIndex extends React.Component {
   constructor() {
     super();
@@ -13,6 +14,7 @@ class ShowIndex extends React.Component {
   handleMenuButton() {
     this.setState(prevState => ({ menuButton: !prevState.menuButton }));
   }
+
 
   render() {
     const { index, restaurant } = this.props;
@@ -29,9 +31,11 @@ class ShowIndex extends React.Component {
           <p>{allThemes}</p>
           <p>{restaurant.url}</p>
           <p>{restaurant.phone}</p>
+          <button onClick={() => this.props.deleteRestaurant(restaurant._id)}> Delete</button>
         </div>
         <button onClick={this.handleMenuButton}>Menu</button>
         {showMenu}
+
       </div>
     );
   }
