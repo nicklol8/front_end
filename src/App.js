@@ -41,7 +41,7 @@ class App extends Component {
         return (
 
           <div>
-            <ShowIndex restaurant={restaurant} key={index} />
+            <ShowIndex deleteRestaurant={this.deleteRestaurant} restaurant={restaurant} key={index} />
           </div>
 
         );
