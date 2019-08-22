@@ -4,6 +4,8 @@ import axios from 'axios';
 import ShowIndex from './Components/ShowIndex';
 import Individual from './Components/Individual';
 import CreateRestaurant from './Components/CreateRestaurant';
+import NewUser from './Components/newUser';
+import Login from './Components/Login.js';
 
 let baseURL = 'http://localhost:3003';
 
@@ -12,7 +14,8 @@ class App extends Component {
     super(props);
     this.state = {
       allRestaurants: [],
-      apiCheck: false
+      apiCheck: false,
+      isLoggedIn: false
     };
   }
 
@@ -46,9 +49,9 @@ class App extends Component {
     );
     return (
       <div className='App'>
+        <Login baseURL={baseURL} />
         <h1>Restaraunts:</h1>
         {renderRestaurant}
-        <CreateRestaurant baseURL={baseURL} />
       </div>
     );
   }
