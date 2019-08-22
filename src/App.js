@@ -6,7 +6,8 @@ import Individual from './Components/Individual';
 import CreateRestaurant from './Components/CreateRestaurant';
 import NewUser from './Components/newUser';
 import Login from './Components/Login.js';
-
+import Cover from './Components/Cover';
+import User from './Components/User';
 
 let baseURL = 'http://localhost:3003';
 
@@ -18,8 +19,8 @@ class App extends Component {
       apiCheck: false,
       isLoggedIn: false
     };
-    this.deleteRestaurant = this.deleteRestaurant.bind(this)
-    this.handleAddRestaurants = this.handleAddRestaurants.bind(this)
+    this.deleteRestaurant = this.deleteRestaurant.bind(this);
+    this.handleAddRestaurants = this.handleAddRestaurants.bind(this);
   }
 
   async getAllRestaurants() {
@@ -39,34 +40,34 @@ class App extends Component {
     const mapAllRestaurants = this.state.allRestaurants.map(
       (restaurant, index) => {
         return (
-
           <div>
-            <ShowIndex restaurant={restaurant} key={index} />
+            <ShowIndex
+              deleteRestaurant={this.deleteRestaurant}
+              restaurant={restaurant}
+              key={index}
+            />
           </div>
-
         );
-
       }
     );
     return mapAllRestaurants;
   }
   async deleteRestaurant(id) {
-    await axios.delete(`${baseURL}/restaurant/${id}`)
-    const filteredRestaurants = this.state.allRestaurants.filter((restaurant)=> {
-      return restaurant._id !== id
-    })
-  this.setState({
-    allRestaurants: filteredRestaurants
-  })
+    await axios.delete(`${baseURL}/restaurant/${id}`);
+    const filteredRestaurants = this.state.allRestaurants.filter(restaurant => {
+      return restaurant._id !== id;
+    });
+    this.setState({
+      allRestaurants: filteredRestaurants
+    });
   }
 
-  handleAddRestaurants(restaurant){
+  handleAddRestaurants(restaurant) {
     const copyRestaurants = [...this.state.allRestaurants];
     copyRestaurants.unshift(restaurant);
     this.setState({
       allRestaurants: copyRestaurants
-      
-    })
+    });
   }
 
   render() {
@@ -80,6 +81,8 @@ class App extends Component {
         <Login baseURL={baseURL} />
         <h1>Restaraunts:</h1>
         {renderRestaurant}
+        <Cover />
+        <User />
       </div>
     );
   }
