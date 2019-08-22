@@ -1,12 +1,7 @@
 .App {
   text-align: center;
   margin: 0 auto;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+  background: lightgray;
 }
 
 .App-header {
@@ -19,9 +14,34 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+h1 {
+  margin: 0px;
+  padding: 2%;
+}
 
 .showAll {
   margin: 0 auto;
   width: 70%;
   border: 1px solid gold;
+  background: lightgoldenrodyellow;
+}
+.restaurants {
+  background: rgba(143, 65, 108, 0.473);
+  margin: 0 auto;
+  width: 100%;
+  /* border: 1px solid gold; */
+}
+img {
+  width: 10%;
+}
+.menu {
+  margin-top: 0px;
+  padding-top: 1%;
+}
+.item {
+  display: inline-block;
+  padding: 0% 5%;
+}
+button {
+  margin: 1%;
 }

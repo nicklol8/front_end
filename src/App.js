@@ -4,7 +4,9 @@ import axios from 'axios';
 import ShowIndex from './Components/ShowIndex';
 import Individual from './Components/Individual';
 import CreateRestaurant from './Components/CreateRestaurant';
-import AppChild from './Components/AppChild';
+import NewUser from './Components/newUser';
+import Login from './Components/Login.js';
+
 
 let baseURL = 'http://localhost:3003';
 
@@ -13,7 +15,8 @@ class App extends Component {
     super(props);
     this.state = {
       allRestaurants: [],
-      apiCheck: false
+      apiCheck: false,
+      isLoggedIn: false
     };
     this.deleteRestaurant = this.deleteRestaurant.bind(this)
     this.handleAddRestaurants = this.handleAddRestaurants.bind(this)
@@ -36,8 +39,11 @@ class App extends Component {
     const mapAllRestaurants = this.state.allRestaurants.map(
       (restaurant, index) => {
         return (
-          <ShowIndex deleteRestaurant={this.deleteRestaurant} restaurant={restaurant} key={index} />
-          // <AppChild eachRestaurant={restaurant} key={index} />
+
+          <div>
+            <ShowIndex restaurant={restaurant} key={index} />
+          </div>
+
         );
 
       }
@@ -71,9 +77,9 @@ class App extends Component {
     );
     return (
       <div className='App'>
+        <Login baseURL={baseURL} />
         <h1>Restaraunts:</h1>
         {renderRestaurant}
-        <CreateRestaurant handleAddRestaurants = {this.handleAddRestaurants} baseURL={baseURL} />
       </div>
     );
   }
