@@ -9,24 +9,32 @@ class ShowIndex extends React.Component {
 
 
   render() {
-    const { index, restaurant } = this.props;
-    const allThemes = restaurant.theme.map((theme, index) => {
-      return <span key={index}>{theme}</span>;
-    });
+    // const { index, restaurant } = this.props;
+    // const allThemes = restaurant.theme.map((theme, index) => {
+    //   return (
+    //     <div>{theme}</div>
+    //   )
+    // });
+    console.log('show', this.props)
+
+
+    // {return (
+    //   <div className='showAll'>
+    //     <h2>{restaurant.name}</h2>
+    //     <div>
+    //       <p>{restaurant.address}</p>
+    //       <p>{allThemes}</p>
+    //       <p>{restaurant.url}</p>
+    //       <p>{restaurant.phone}</p>
+          
+    //     </div>
+       
+       
+    //   </div>
+    // );}
     return (
-      <div className='showAll'>
-        <h2>{restaurant.name}</h2>
-        <div>
-          <p>{restaurant.address}</p>
-          <p>{allThemes}</p>
-          <p>{restaurant.url}</p>
-          <p>{restaurant.phone}</p>
-          <button onClick={() => this.props.deleteRestaurant(restaurant._id)}> Delete</button>
-        </div>
-       
-       
-      </div>
-    );
+      <div>show</div>
+    )
   }
 }
 
