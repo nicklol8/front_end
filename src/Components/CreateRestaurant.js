@@ -41,7 +41,8 @@ class NewFormComponent extends React.Component {
       url: '',
       phone: ''
     });
-    this.props.addRestaurant(response.data);
+    this.props.handleAddRestaurants(response.data);
+    
   }
 
   handleChange(event) {
