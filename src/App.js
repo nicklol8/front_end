@@ -9,6 +9,7 @@ import Login from './Components/Login.js';
 import ShowAllRestaurants from './Components/ShowAllRestaurants.js';
 import Cover from './Components/Cover';
 import User from './Components/User';
+import FilterByTheme from './Components/FilterByTheme';
 
 let baseURL = 'http://localhost:3003';
 
@@ -77,9 +78,17 @@ class App extends Component {
     });
   }
 
-  logIn() {
-    this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }));
-    console.log('logged');
+  logIn(data) {
+    this.setState({
+      isLoggedIn: true,
+      currentUser: {
+        name: data.username,
+        favorites: data.favorites
+      }
+    });
+    console.log(`Welcome ${data.username}`);
+    // (prevState => ({ isLoggedIn: !prevState.isLoggedIn }));
+    // console.log('logged');
   }
 
   render() {
@@ -90,7 +99,7 @@ class App extends Component {
     );
 
     const loggedIn = this.state.isLoggedIn ? (
-      <h1>Welcome Back</h1>
+      <h1>Welcome Back {this.state.currentUser.name}</h1>
     ) : (
       <h2>Please Log In</h2>
     );
@@ -99,8 +108,11 @@ class App extends Component {
         <div className='App'>
           <Link to='/restaurants'>All</Link>
           <Link to='/register'>Sign up</Link>
-          <Link to='/login'>Log in</Link>
+          <Link to='/login'>
+            <button>Log IN</button>
+          </Link>
           {loggedIn}
+          <Link to='/filter'>Filter</Link>
           <Route
             path='/restaurants'
             render={props => (
@@ -111,6 +123,7 @@ class App extends Component {
               />
             )}
           />
+          <Route path='/' exact component={Cover} />
           <Route
             path='/register'
             render={props => <NewUser {...props} baseURL={baseURL} />}
@@ -119,6 +132,15 @@ class App extends Component {
             path='/login'
             render={props => (
               <Login {...props} logIn={this.logIn} baseURL={baseURL} />
+            )}
+          />
+          <Route
+            path='/filter'
+            render={props => (
+              <FilterByTheme
+                {...props}
+                allRestaurants={this.state.allRestaurants}
+              />
             )}
           />
         </div>

@@ -17,6 +17,7 @@ class NewUser extends React.Component {
     const baseURL = this.props.baseURL;
     console.log('before', this.state);
     const newUser = await axios.post(`${baseURL}/user/register`, {
+      // await axios.post(`${baseURL}/user/register`, {
       username: this.state.username,
       password: this.state.password
     });
