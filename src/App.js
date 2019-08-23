@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import ShowIndex from './Components/ShowIndex';
-import Individual from './Components/Individual';
 import CreateRestaurant from './Components/CreateRestaurant';
 import NewUser from './Components/newUser';
 import Login from './Components/Login.js';
