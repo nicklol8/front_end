@@ -1,8 +1,8 @@
 import React from 'react';
 import ShowIndex from './ShowIndex';
 
-const ShowAllRestaurants = props => {
-  const mapAllRestaurants = props.allRestaurants.map((restaurant, index) => {
+const ShowFavorites = props => {
+  const mapFavorites = props.myFavorites.map((restaurant, index) => {
     return (
       <div key={index}>
         <ShowIndex
@@ -14,7 +14,7 @@ const ShowAllRestaurants = props => {
       </div>
     );
   });
-  return <div>{mapAllRestaurants}</div>;
+  return <div>{mapFavorites}</div>;
 };
 
-export default ShowAllRestaurants;
+export default ShowFavorites;
