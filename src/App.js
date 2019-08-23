@@ -7,7 +7,12 @@ import Individual from './Components/Individual';
 import CreateRestaurant from './Components/CreateRestaurant';
 import NewUser from './Components/newUser';
 import Login from './Components/Login.js';
+<<<<<<< HEAD
 import ShowAllRestaurants from './Components/ShowAllRestaurants.js';
+=======
+import Cover from './Components/Cover';
+import User from './Components/User';
+>>>>>>> 86fe6176e91dd65e71026d011485fa3216bb0ff4
 
 let baseURL = 'http://localhost:3003';
 
