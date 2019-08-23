@@ -51,7 +51,7 @@ class NewUser extends React.Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <input type='Submit' value='Add User' />
+          <input type='submit' value='Add User' />
         </form>
       </div>
     );
