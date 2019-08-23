@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 
 class Login extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       password: ''
@@ -23,6 +23,9 @@ class Login extends React.Component {
       };
       const response = await axios.post(`${baseURL}/user/login`, reqBody);
       console.log('GET OK', response.data);
+      if (response.data === 'Login good') {
+        this.props.logIn();
+      }
     } catch (err) {
       console.log('Login error:', err.message);
     }
@@ -33,7 +36,6 @@ class Login extends React.Component {
     await this.setState({
       [name]: value
     });
-    console.log('onChange', this.state);
   }
 
   render() {

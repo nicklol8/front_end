@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import ShowIndex from './Components/ShowIndex';
 import Individual from './Components/Individual';
 import CreateRestaurant from './Components/CreateRestaurant';
 import NewUser from './Components/newUser';
 import Login from './Components/Login.js';
+import ShowAllRestaurants from './Components/ShowAllRestaurants.js';
 
 let baseURL = 'http://localhost:3003';
 
@@ -15,10 +17,15 @@ class App extends Component {
     this.state = {
       allRestaurants: [],
       apiCheck: false,
-      isLoggedIn: false
+      isLoggedIn: false,
+      currentUser: {
+        name: '',
+        favorites: []
+      }
     };
     this.deleteRestaurant = this.deleteRestaurant.bind(this);
     this.handleAddRestaurants = this.handleAddRestaurants.bind(this);
+    this.logIn = this.logIn.bind(this);
   }
 
   async getAllRestaurants() {
@@ -50,6 +57,7 @@ class App extends Component {
     );
     return mapAllRestaurants;
   }
+
   async deleteRestaurant(id) {
     await axios.delete(`${baseURL}/restaurant/${id}`);
     const filteredRestaurants = this.state.allRestaurants.filter(restaurant => {
@@ -68,18 +76,52 @@ class App extends Component {
     });
   }
 
+  logIn() {
+    this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }));
+    console.log('logged');
+  }
+
   render() {
     const renderRestaurant = this.state.apiCheck ? (
       this.showAllRestaurants()
     ) : (
       <h1>Failed</h1>
     );
+
+    const loggedIn = this.state.isLoggedIn ? (
+      <h1>Welcome Back</h1>
+    ) : (
+      <h2>Please Log In</h2>
+    );
     return (
-      <div className='App'>
-        <Login baseURL={baseURL} />
-        <h1>Restaraunts:</h1>
-        {renderRestaurant}
-      </div>
+      <Router>
+        <div className='App'>
+          <Link to='/restaurants'>All</Link>
+          <Link to='/register'>Sign up</Link>
+          <Link to='/login'>Log in</Link>
+          {loggedIn}
+          <Route
+            path='/restaurants'
+            render={props => (
+              <ShowAllRestaurants
+                {...props}
+                allRestaurants={this.state.allRestaurants}
+                deleteRestaurant={this.deleteRestaurant}
+              />
+            )}
+          />
+          <Route
+            path='/register'
+            render={props => <NewUser {...props} baseURL={baseURL} />}
+          />
+          <Route
+            path='/login'
+            render={props => (
+              <Login {...props} logIn={this.logIn} baseURL={baseURL} />
+            )}
+          />
+        </div>
+      </Router>
     );
   }
 }
