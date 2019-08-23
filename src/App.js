@@ -78,9 +78,17 @@ class App extends Component {
     });
   }
 
-  logIn() {
-    this.setState(prevState => ({ isLoggedIn: !prevState.isLoggedIn }));
-    console.log('logged');
+  logIn(data) {
+    this.setState({
+      isLoggedIn: true,
+      currentUser: {
+        name: data.username,
+        favorites: data.favorites
+      }
+    });
+    console.log(`Welcome ${data.username}`);
+    // (prevState => ({ isLoggedIn: !prevState.isLoggedIn }));
+    // console.log('logged');
   }
 
   render() {
@@ -91,7 +99,7 @@ class App extends Component {
     );
 
     const loggedIn = this.state.isLoggedIn ? (
-      <h1>Welcome Back</h1>
+      <h1>Welcome Back {this.state.currentUser.name}</h1>
     ) : (
       <h2>Please Log In</h2>
     );
@@ -100,7 +108,9 @@ class App extends Component {
         <div className='App'>
           <Link to='/restaurants'>All</Link>
           <Link to='/register'>Sign up</Link>
-          <Link to='/login'>Log in</Link>
+          <Link to='/login'>
+            <button>Log IN</button>
+          </Link>
           {loggedIn}
           <Route
             path='/restaurants'
@@ -112,6 +122,7 @@ class App extends Component {
               />
             )}
           />
+          <Route path='/' exact component={Cover} />
           <Route
             path='/register'
             render={props => <NewUser {...props} baseURL={baseURL} />}
