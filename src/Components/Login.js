@@ -24,7 +24,7 @@ class Login extends React.Component {
       const response = await axios.post(`${baseURL}/user/login`, reqBody);
       console.log('GET OK', response.data);
       if (response.data === 'Login good') {
-        this.props.logIn();
+        this.props.logIn(reqBody);
       }
     } catch (err) {
       console.log('Login error:', err.message);
