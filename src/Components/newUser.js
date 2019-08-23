@@ -15,10 +15,12 @@ class NewUser extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const baseURL = this.props.baseURL;
-    await axios.post(`${baseURL}/user`, {
+    console.log('before', this.state);
+    const newUser = await axios.post(`${baseURL}/user/register`, {
       username: this.state.username,
       password: this.state.password
     });
+    console.log('sent', newUser);
     this.setState({
       username: '',
       password: ''
