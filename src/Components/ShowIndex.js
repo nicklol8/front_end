@@ -1,7 +1,6 @@
 import React from 'react';
 import Menu from './Menu';
 
-
 class ShowIndex extends React.Component {
   constructor() {
     super();
@@ -15,14 +14,16 @@ class ShowIndex extends React.Component {
     this.setState(prevState => ({ menuButton: !prevState.menuButton }));
   }
 
-
   render() {
     const { index, restaurant } = this.props;
     const allThemes = restaurant.theme.map((theme, index) => {
       return <span key={index}>{theme}</span>;
     });
-    const showMenu = this.state.menuButton ? <Menu restaurant={restaurant}/> : null;
+    const showMenu = this.state.menuButton ? (
+      <Menu restaurant={restaurant} />
+    ) : null;
     return (
+<<<<<<< HEAD
       
       <div className="container">
        <div className="row butter">
@@ -32,22 +33,36 @@ class ShowIndex extends React.Component {
         
      
           <div className="col-6 flutter">
+=======
+      <div className='container'>
+        <div className='row'>
+          <div className='col-6'>
+            <img className='img1' src={restaurant.image} />
+          </div>
+
+          <div className='col-6'>
+>>>>>>> 0153227175884f6c577416f49e4f1ec2c594341b
             <h2>{restaurant.name}</h2>
             <p>{restaurant.address}</p>
-              <p>{allThemes}</p>
-              <p>{restaurant.url}</p>
-              <p>{restaurant.phone}</p>
-              <button onClick={() => this.props.deleteRestaurant(restaurant._id)}> Delete</button>
-        <button onClick={this.handleMenuButton}>Menu</button>
+            <p>{allThemes}</p>
+            <p>{restaurant.url}</p>
+            <p>{restaurant.phone}</p>
+            {/* <button onClick={() => this.props.deleteRestaurant(restaurant._id)}> Delete</button> */}
+            <button onClick={() => this.props.addToFavorites(restaurant)}>
+              Add to favorites
+            </button>
+            <button onClick={this.handleMenuButton}>Menu</button>
           </div>
-      
         </div>
         <div className="card ">    
             
         {showMenu}
+<<<<<<< HEAD
 
         </div>
 
+=======
+>>>>>>> 0153227175884f6c577416f49e4f1ec2c594341b
       </div>
     );
   }

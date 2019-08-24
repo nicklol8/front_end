@@ -10,6 +10,7 @@ import Login from './Components/Login.js';
 import ShowAllRestaurants from './Components/ShowAllRestaurants.js';
 import Cover from './Components/Cover';
 import User from './Components/User';
+import ShowFavorites from './Components/ShowFavorites';
 
 let baseURL = 'http://localhost:3003';
 
@@ -22,12 +23,15 @@ class App extends Component {
       isLoggedIn: false,
       currentUser: {
         name: '',
-        favorites: []
+        favorites: [],
+        id: null
       }
     };
     this.deleteRestaurant = this.deleteRestaurant.bind(this);
     this.handleAddRestaurants = this.handleAddRestaurants.bind(this);
     this.logIn = this.logIn.bind(this);
+    this.addToFavorites = this.addToFavorites.bind(this);
+    this.handleAddToFavorites = this.handleAddToFavorites.bind(this);
   }
 
   async getAllRestaurants() {
@@ -78,17 +82,31 @@ class App extends Component {
     });
   }
 
+  addToFavorites(restaurant) {
+    const copyUser = this.state.currentUser;
+    copyUser.favorites.unshift(restaurant);
+    this.setState({
+      currentUser: copyUser
+    });
+    this.handleAddToFavorites();
+  }
+
+  async handleAddToFavorites() {
+    console.log(this.state.currentUser.favorites);
+    await axios.put(`${baseURL}/user/${this.state.currentUser.id}`, {
+      favorites: this.state.currentUser.favorites
+    });
+  }
   logIn(data) {
     this.setState({
       isLoggedIn: true,
       currentUser: {
         name: data.username,
-        favorites: data.favorites
+        favorites: data.favorites,
+        id: data._id
       }
     });
     console.log(`Welcome ${data.username}`);
-    // (prevState => ({ isLoggedIn: !prevState.isLoggedIn }));
-    // console.log('logged');
   }
 
   render() {
@@ -115,12 +133,14 @@ class App extends Component {
           <Link to='/login'>
             <button className="coverButton">Log IN</button>
           </Link>
+          <Link to='/favorites'>Show Favorites</Link>
           {loggedIn}
           <Route
             path='/restaurants'
             render={props => (
               <ShowAllRestaurants
                 {...props}
+                addToFavorites={this.addToFavorites}
                 allRestaurants={this.state.allRestaurants}
                 deleteRestaurant={this.deleteRestaurant}
               />
@@ -135,6 +155,17 @@ class App extends Component {
             path='/login'
             render={props => (
               <Login {...props} logIn={this.logIn} baseURL={baseURL} />
+            )}
+          />
+          <Route
+            path='/favorites'
+            render={props => (
+              <ShowFavorites
+                {...props}
+                addToFavorites={this.addToFavorites}
+                myFavorites={this.state.currentUser.favorites}
+                deleteRestaurant={this.deleteRestaurant}
+              />
             )}
           />
         </div>
