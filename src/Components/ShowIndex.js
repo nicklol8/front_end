@@ -23,31 +23,19 @@ class ShowIndex extends React.Component {
       <Menu restaurant={restaurant} />
     ) : null;
     return (
-<<<<<<< HEAD
-      
-      <div className="container">
-       <div className="row butter">
-          <div className="col-6 flutter">
-              <img className = "img1" src={restaurant.image} />
-          </div>
-        
-     
-          <div className="col-6 flutter">
-=======
-      <div className='container'>
+      <div className='container butter'>
         <div className='row'>
           <div className='col-6'>
-            <img className='img1' src={restaurant.image} />
+            <img className='img1 banana flutter' src={restaurant.image} />
           </div>
 
-          <div className='col-6'>
->>>>>>> 0153227175884f6c577416f49e4f1ec2c594341b
+          <div className='col-6 '>
             <h2>{restaurant.name}</h2>
             <p>{restaurant.address}</p>
             <p>{allThemes}</p>
             <p>{restaurant.url}</p>
             <p>{restaurant.phone}</p>
-            {/* <button onClick={() => this.props.deleteRestaurant(restaurant._id)}> Delete</button> */}
+            <button onClick={() => this.props.deleteRestaurant(restaurant._id)}> Delete</button>
             <button onClick={() => this.props.addToFavorites(restaurant)}>
               Add to favorites
             </button>
@@ -55,14 +43,8 @@ class ShowIndex extends React.Component {
           </div>
         </div>
         <div className="card ">    
-            
+           </div> 
         {showMenu}
-<<<<<<< HEAD
-
-        </div>
-
-=======
->>>>>>> 0153227175884f6c577416f49e4f1ec2c594341b
       </div>
     );
   }
