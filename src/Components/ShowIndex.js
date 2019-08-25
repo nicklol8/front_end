@@ -23,28 +23,30 @@ class ShowIndex extends React.Component {
       <Menu restaurant={restaurant} />
     ) : null;
     return (
-      <div className='container'>
-        <div className='row'>
+      <div className='container '>
+        <div className='row butter'>
           <div className='col-6'>
-            <img className='img1' src={restaurant.image} />
+            <img className='img1 banana flutter' src={restaurant.image} />
           </div>
 
-          <div className='col-6'>
+          <div className='col-6 butter '>
             <h2>{restaurant.name}</h2>
             <p>{restaurant.address}</p>
             <p>{allThemes}</p>
             <p>{restaurant.url}</p>
             <p>{restaurant.phone}</p>
+
             <button onClick={() => this.props.deleteRestaurant(restaurant._id)}>
               Delete
             </button>
+
             <button onClick={() => this.props.addToFavorites(restaurant)}>
               Add to favorites
             </button>
             <button onClick={this.handleMenuButton}>Menu</button>
           </div>
         </div>
-        {showMenu}
+        <div className='card  '>{showMenu}</div>
       </div>
     );
   }
