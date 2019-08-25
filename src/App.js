@@ -32,6 +32,7 @@ class App extends Component {
     this.logIn = this.logIn.bind(this);
     this.addToFavorites = this.addToFavorites.bind(this);
     this.handleAddToFavorites = this.handleAddToFavorites.bind(this);
+    this.findOneToDelete = this.findOneToDelete.bind(this);
   }
 
   async getAllRestaurants() {
@@ -91,6 +92,26 @@ class App extends Component {
     this.handleAddToFavorites();
   }
 
+  findOneToDelete(restaurant) {
+    const thisRestaurant = restaurant;
+    const copyRestaurants = this.state.currentUser.favorites;
+    const copyUser = this.state.currentUser;
+    copyRestaurants.splice(
+      copyRestaurants
+        .map(function(e) {
+          return e._id;
+        })
+        .indexOf(thisRestaurant),
+      1
+    );
+    console.log(copyUser);
+    copyUser.favorites = copyRestaurants;
+    this.setState({
+      currentUser: copyUser
+    });
+    this.handleAddToFavorites();
+  }
+
   async handleAddToFavorites() {
     console.log(this.state.currentUser.favorites);
     await axios.put(`${baseURL}/user/${this.state.currentUser.id}`, {
@@ -131,6 +152,7 @@ class App extends Component {
           </Link>
           <Link to='/favorites'>Show Favorites</Link>
           {loggedIn}
+          <Route path='/' exact component={Cover} />
           <Route
             path='/restaurants'
             render={props => (
@@ -142,7 +164,7 @@ class App extends Component {
               />
             )}
           />
-          <Route path='/' exact component={Cover} />
+
           <Route
             path='/register'
             render={props => <NewUser {...props} baseURL={baseURL} />}
@@ -160,7 +182,7 @@ class App extends Component {
                 {...props}
                 addToFavorites={this.addToFavorites}
                 myFavorites={this.state.currentUser.favorites}
-                deleteRestaurant={this.deleteRestaurant}
+                deleteRestaurant={this.findOneToDelete}
               />
             )}
           />

@@ -21,7 +21,8 @@ class NewUser extends React.Component {
     });
     this.setState({
       username: '',
-      password: ''
+      password: '',
+      redirect: true
     });
   }
 

@@ -35,7 +35,9 @@ class ShowIndex extends React.Component {
             <p>{allThemes}</p>
             <p>{restaurant.url}</p>
             <p>{restaurant.phone}</p>
-            {/* <button onClick={() => this.props.deleteRestaurant(restaurant._id)}> Delete</button> */}
+            <button onClick={() => this.props.deleteRestaurant(restaurant._id)}>
+              Delete
+            </button>
             <button onClick={() => this.props.addToFavorites(restaurant)}>
               Add to favorites
             </button>

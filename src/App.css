@@ -62,7 +62,6 @@ button {
   /* margin-top: 70px; */
 }
 
-
 /* Cover styles */
 .header1 {
   background: #282c34;
@@ -121,40 +120,33 @@ input {
 }
 /* background-image: linear-gradient(to top, #c71d6f 0%, #d09693 100%); */
 
-.img1{
+.img1 {
   height: 40%;
   margin: 0 auto;
-  width:60%;
+  width: 60%;
   padding-top: 5%;
   padding-bottom: 5%;
   border-style: ridge;
 }
 
-.row{
- 
+.row {
   background-color: rgba(107, 212, 204, 0.473);
   /* background: #477885; */
   border: 1.5px solid black;
   width: 700px;
   margin: 0 auto;
   margin-bottom: 0.5%;
-
-  
 }
 
 .container {
   background-size: contain;
-
-
 }
 
-.col-6{
+.col-6 {
   margin-left: 0;
   padding: 0px;
   height: 60%;
-
 }
 h2 {
   /* margin-top: 40px; */
 }
-
