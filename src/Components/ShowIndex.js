@@ -23,13 +23,13 @@ class ShowIndex extends React.Component {
       <Menu restaurant={restaurant} />
     ) : null;
     return (
-      <div className='container butter'>
-        <div className='row'>
+      <div className='container '>
+        <div className='row butter'>
           <div className='col-6'>
             <img className='img1 banana flutter' src={restaurant.image} />
           </div>
 
-          <div className='col-6 '>
+          <div className='col-6 butter '>
             <h2>{restaurant.name}</h2>
             <p>{restaurant.address}</p>
             <p>{allThemes}</p>
@@ -42,9 +42,9 @@ class ShowIndex extends React.Component {
             <button onClick={this.handleMenuButton}>Menu</button>
           </div>
         </div>
-        <div className="card ">    
-           </div> 
+        <div className="card  ">    
         {showMenu}
+           </div> 
       </div>
     );
   }
