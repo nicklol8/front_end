@@ -124,10 +124,14 @@ class App extends Component {
     return (
       <Router>
         <div className='App'>
-          <Link to='/restaurants'>All</Link>
-          <Link to='/register'>Sign up</Link>
+          <Link to='/restaurants'>
+            <button className="coverButton">Restaurants</button>
+          </Link>
+          <Link to='/register'>
+            <button className="coverButton">Sign up</button>
+          </Link>
           <Link to='/login'>
-            <button>Log IN</button>
+            <button className="coverButton">Log IN</button>
           </Link>
           <Link to='/favorites'>Show Favorites</Link>
           {loggedIn}
