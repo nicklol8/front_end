@@ -40,13 +40,12 @@ h1 {
     rgba(247, 235, 116, 1) 90.1%
   );
 }
-.table{
+.table {
   background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%);
   margin: 0 auto;
   width: 100%;
   border: 1px solid white;
   /* font-size: 30rem; */
-  
 }
 img {
   width: 10%;
@@ -63,7 +62,6 @@ button {
   margin: 1%;
   /* margin-top: 70px; */
 }
-
 
 /* Cover styles */
 .header1 {
@@ -123,51 +121,41 @@ input {
 }
 /* background-image: linear-gradient(to top, #c71d6f 0%, #d09693 100%); */
 
-.img1{
+.img1 {
   height: 40%;
   margin: 0 auto;
-  width:60%;
+  width: 60%;
   padding-top: 5%;
   padding-bottom: 5%;
   border-style: ridge;
 }
 
-.butter{
- 
+.butter {
   background-color: rgba(107, 212, 204, 0.473);
   /* background: #477885; */
   border: 1.5px solid black;
   width: 700px;
   margin: 0 auto;
   margin-bottom: 0.5%;
-
-  
 }
 
 .container {
   background-size: contain;
-
-
 }
 
-.flutter{
+.flutter {
   margin-left: 0;
   padding: 0px;
   height: 60%;
-
 }
 
-
 .banana {
-  
- height: 200px;
-
+  height: 200px;
 }
 
 .card {
   width: 30rem;
-  margin: 0 auto; 
-  float: none; 
-  margin-bottom: 10px; 
- 
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
 }
