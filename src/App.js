@@ -152,7 +152,6 @@ class App extends Component {
           </Link>
           <Link to='/login'>
             <button className='coverButton'>Log IN</button>
-          </Link>
           <Link to='/favorites'>
             <button className='coverButton'>Show Favorites</button>
           </Link>

@@ -4,7 +4,7 @@ import ShowIndex from './ShowIndex';
 const ShowFavorites = props => {
   const mapFavorites = props.myFavorites.map((restaurant, index) => {
     return (
-      <div key={index}>
+      <div className='favBackground' key={index}>
         <ShowIndex
           addToFavorites={props.addToFavorites}
           deleteRestaurant={props.deleteRestaurant}

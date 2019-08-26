@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   margin: 0 auto;
-  /* background: lightgrey; */
   background-image: linear-gradient(to right, #868f96 0%, #596164 100%);
   background-blend-mode: normal, lighten, soft-light;
   background-blend-mode: lighten;
@@ -10,11 +9,6 @@
 .App-header {
   background-color: #282c34;
   background: #c9ccd3;
-  /* background-image: linear-gradient(
-    -180deg,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  ); */
   background-blend-mode: lighten;
   min-height: 100vh;
   display: flex;
@@ -33,7 +27,6 @@ h1 {
   margin: 0 auto;
   width: 70%;
   border: 1px solid gold;
-  /* background: lightgoldenrodyellow; */
   background-image: radial-gradient(
     circle farthest-corner at 10% 20%,
     rgba(242, 237, 193, 1) 0%,
@@ -45,22 +38,20 @@ h1 {
   margin: 0 auto;
   width: 100%;
   border: 1px solid white;
-  /* font-size: 30rem; */
 }
-img {
+/* img {
   width: 10%;
-}
-.menu {
+} */
+/* .menu {
   margin-top: 0px;
   padding-top: 1%;
-}
+} */
 .item {
   display: inline-block;
   padding: 0% 5%;
 }
 button {
   margin: 1%;
-  /* margin-top: 70px; */
 }
 
 /* Cover styles */
@@ -73,10 +64,8 @@ button {
   letter-spacing: 20px;
 }
 .header2 {
-  /* background: #303233; */
   background-image: linear-gradient(to right, #434343 0%, black 100%);
   background: #282c34;
-  /* background-image: linear-gradient(to right, #868f96 0%, #596164 100%); */
   padding: 1%;
 }
 .backgroundCover {
@@ -90,7 +79,6 @@ button {
 .coverButton {
   color: white;
   background-image: linear-gradient(to top, #c71d6f 0%, #d09693 100%);
-  /* background: rgb(131, 65, 114); */
   font-size: 24px;
   border-radius: 5px;
 }
@@ -115,40 +103,16 @@ input {
   font-size: 20px;
 }
 .userSubmit {
-  /* background: rgb(131, 65, 114); */
   background-image: linear-gradient(to top, #c71d6f 0%, #d09693 100%);
   color: white;
-}
-/* background-image: linear-gradient(to top, #c71d6f 0%, #d09693 100%); */
-
-.img1 {
-  height: 40%;
-  margin: 0 auto;
-  width: 60%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  border-style: ridge;
-}
-
-.butter {
-  background-color: rgba(107, 212, 204, 0.473);
-  /* background: #477885; */
-  border: 1.5px solid black;
-  width: 700px;
-  margin: 0 auto;
-  margin-bottom: 0.5%;
 }
 
 .container {
   background-size: contain;
 }
-
-.col-6 {
-  margin-left: 0;
-  padding: 0px;
-  height: 60%;
+.row {
+  border: 1px solid black;
 }
-
 .row:hover {
   background: #ffefba; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -162,19 +126,37 @@ input {
     #ffffff
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
 .filterBody {
   background: linear-gradient(to right, #868f96 0%, #596164 100%);
   height: 1000px;
 }
 
-.flutter {
+
+.img1 {
+  height: 200px;
+  margin: 0 auto;
+  width: 60%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border-style: ridge;
+  margin-top: 6%;
+}
+
+.col-6 {
   margin-left: 0;
   padding: 0px;
   height: 60%;
 }
+.butter {
+  background-color: rgba(107, 212, 204, 0.473);
+  width: 700px;
+  margin: 0 auto;
+}
 
-.banana {
-  height: 200px;
+.filterBody {
+  background: linear-gradient(to right, #868f96 0%, #596164 100%);
+  height: 1000px;
 }
 
 .card {
@@ -182,4 +164,9 @@ input {
   margin: 0 auto;
   float: none;
   margin-bottom: 10px;
+  margin-top: 10px;
+}
+.favBackground {
+  background: linear-gradient(to right, #868f96 0%, #596164 100%);
+  /* height: 1000px; */
 }
