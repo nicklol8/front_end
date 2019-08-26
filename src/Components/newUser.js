@@ -24,7 +24,8 @@ class NewUser extends React.Component {
     console.log('sent', newUser);
     this.setState({
       username: '',
-      password: ''
+      password: '',
+      redirect: true
     });
   }
 
@@ -37,9 +38,10 @@ class NewUser extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>Sign up!</h3>
-        <form onSubmit={this.handleSubmit}>
+      <div className='backgroundUser'>
+      <header className='header1'>FOODSO</header>
+       
+        <form  className='user' onSubmit={this.handleSubmit}>
           <label htmlFor='username' />
           <input
             type='text'
@@ -54,7 +56,7 @@ class NewUser extends React.Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <input type='submit' value='Add User' />
+          <input type='submit' value='Sign up' />
         </form>
       </div>
     );
