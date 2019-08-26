@@ -1,9 +1,9 @@
 import React from 'react';
 import Menu from './Menu';
 
-class ShowIndex extends React.Component {
-  constructor(props) {
-    super(props);
+class ShowFavoritesList extends React.Component {
+  constructor() {
+    super();
     this.state = {
       menuButton: false
     };
@@ -42,14 +42,9 @@ class ShowIndex extends React.Component {
             </p>
             <p>{restaurant.phone}</p>
 
-            {/* <button onClick={() => this.props.deleteRestaurant(restaurant._id)}>
-              Delete
-            </button> */}
-            {this.props.isLoggedIn ? (
-              <button onClick={() => this.props.addToFavorites(restaurant)}>
-                Add to favorites
-              </button>
-            ) : null}
+            <button onClick={() => this.props.deleteRestaurant(restaurant._id)}>
+              Remove from favorites
+            </button>
             <button onClick={this.handleMenuButton}>Menu</button>
           </div>
         </div>
@@ -60,4 +55,4 @@ class ShowIndex extends React.Component {
   }
 }
 
-export default ShowIndex;
+export default ShowFavoritesList;

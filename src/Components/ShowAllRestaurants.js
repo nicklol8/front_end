@@ -6,6 +6,7 @@ const ShowAllRestaurants = props => {
     return (
       <div key={index}>
         <ShowIndex
+          isLoggedIn={props.isLoggedIn}
           addToFavorites={props.addToFavorites}
           deleteRestaurant={props.deleteRestaurant}
           restaurant={restaurant}
