@@ -3,13 +3,14 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import ShowIndex from './Components/ShowIndex';
-import Individual from './Components/Individual';
 import CreateRestaurant from './Components/CreateRestaurant';
 import NewUser from './Components/newUser';
 import Login from './Components/Login.js';
 import ShowAllRestaurants from './Components/ShowAllRestaurants.js';
 import Cover from './Components/Cover';
 import User from './Components/User';
+import FilterByTheme from './Components/FilterByTheme';
+
 import ShowFavorites from './Components/ShowFavorites';
 
 let baseURL = 'http://localhost:3003';
@@ -33,6 +34,7 @@ class App extends Component {
     this.addToFavorites = this.addToFavorites.bind(this);
     this.handleAddToFavorites = this.handleAddToFavorites.bind(this);
     this.findOneToDelete = this.findOneToDelete.bind(this);
+
   }
 
   async getAllRestaurants() {
@@ -92,6 +94,7 @@ class App extends Component {
     this.handleAddToFavorites();
   }
 
+
   findOneToDelete(restaurant) {
     const thisRestaurant = restaurant;
     const copyRestaurants = this.state.currentUser.favorites;
@@ -111,7 +114,6 @@ class App extends Component {
     });
     this.handleAddToFavorites();
   }
-
   async handleAddToFavorites() {
     console.log(this.state.currentUser.favorites);
     await axios.put(`${baseURL}/user/${this.state.currentUser.id}`, {
@@ -155,6 +157,8 @@ class App extends Component {
             <button className="coverButton">Log IN</button>
           </Link>
           <Link to='/favorites'>Show Favorites</Link>
+          <Link to='/filter'>Filter by Food Type</Link>
+          {loggedIn}
           {loggedIn}
           <Route path='/' exact component={Cover} />
           <Route
@@ -180,6 +184,16 @@ class App extends Component {
             )}
           />
           <Route
+            path='/filter'
+            render={props => (
+              <FilterByTheme
+                {...props}
+                allRestaurants={this.state.allRestaurants}
+              />
+            )}
+          />
+          <Route
+
             path='/favorites'
             render={props => (
               <ShowFavorites

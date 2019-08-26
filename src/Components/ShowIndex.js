@@ -39,14 +39,15 @@ class ShowIndex extends React.Component {
             <button onClick={() => this.props.deleteRestaurant(restaurant._id)}>
               Delete
             </button>
-
             <button onClick={() => this.props.addToFavorites(restaurant)}>
               Add to favorites
             </button>
             <button onClick={this.handleMenuButton}>Menu</button>
           </div>
         </div>
+
         <div className='card  '>{showMenu}</div>
+
       </div>
     );
   }
