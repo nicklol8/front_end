@@ -8,12 +8,17 @@ import NewUser from './Components/newUser';
 import Login from './Components/Login.js';
 import ShowAllRestaurants from './Components/ShowAllRestaurants.js';
 import Cover from './Components/Cover';
-import User from './Components/User';
 import FilterByTheme from './Components/FilterByTheme';
 
 import ShowFavorites from './Components/ShowFavorites';
 
-let baseURL = 'http://localhost:3003';
+let baseURL = process.env.REACT_APP_BASEURL;
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003';
+} else {
+  baseURL = 'https://foodso.herokuapp.com';
+}
 
 class App extends Component {
   constructor(props) {
@@ -131,14 +136,8 @@ class App extends Component {
   }
 
   render() {
-    const renderRestaurant = this.state.apiCheck ? (
-      this.showAllRestaurants()
-    ) : (
-      <h1>Failed</h1>
-    );
-
     const loggedIn = this.state.isLoggedIn ? (
-      <h1>Welcome Back {this.state.currentUser.name}</h1>
+      <h5>Welcome back {this.state.currentUser.name}</h5>
     ) : null;
     return (
       <Router>
@@ -147,18 +146,29 @@ class App extends Component {
           <Link to='/restaurants'>
             <button className='coverButton'>Restaurants</button>
           </Link>
-          <Link to='/register'>
-            <button className='coverButton'>Sign up</button>
-          </Link>
-          <Link to='/login'>
-            <button className='coverButton'>Log IN</button>
-          </Link>
-          <Link to='/favorites'>
-            <button className='coverButton'>Show Favorites</button>
-          </Link>
+          {this.state.isLoggedIn ? null : (
+            <Link to='/register'>
+              <button className='coverButton'>Sign up</button>
+            </Link>
+          )}
+          {this.state.isLoggedIn ? null : (
+            <Link to='/login'>
+              <button className='coverButton'>Log in</button>
+            </Link>
+          )}
           <Link to='/filter'>
             <button className='coverButton'>Filter by Food Type</button>
           </Link>
+          {this.state.isLoggedIn ? (
+            <Link to='/favorites'>
+              <button className='coverButton'>Show Favorites</button>
+            </Link>
+          ) : null}
+          {this.state.isLoggedIn ? (
+            <Link to='/addnew'>
+              <button className='coverButton'>Add New Restaurant</button>
+            </Link>
+          ) : null}
           {loggedIn}
           <Route path='/' exact component={Cover} />
           <Route
@@ -166,6 +176,7 @@ class App extends Component {
             render={props => (
               <ShowAllRestaurants
                 {...props}
+                isLoggedIn={this.state.isLoggedIn}
                 addToFavorites={this.addToFavorites}
                 allRestaurants={this.state.allRestaurants}
                 deleteRestaurant={this.deleteRestaurant}
@@ -200,6 +211,16 @@ class App extends Component {
                 addToFavorites={this.addToFavorites}
                 myFavorites={this.state.currentUser.favorites}
                 deleteRestaurant={this.findOneToDelete}
+              />
+            )}
+          />
+          <Route
+            path='/addnew'
+            render={props => (
+              <CreateRestaurant
+                {...props}
+                baseURL={baseURL}
+                handleAddRestaurants={this.handleAddRestaurants}
               />
             )}
           />

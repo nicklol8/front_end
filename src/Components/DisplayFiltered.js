@@ -1,14 +1,12 @@
 import React from 'react';
 
 const DisplayFiltered = props => {
-  console.log('these asre props', props);
-
   return (
     <div className='filterBody'>
       <div className='container'>
         <div className='row butter'>
           <div className='col-6'>
-            <img className='img1' src={props.filtered.image} />
+            <img alt='' className='img1' src={props.filtered.image} />
           </div>
 
           <div className='col-6 butter1'>

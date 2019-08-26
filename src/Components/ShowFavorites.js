@@ -1,11 +1,11 @@
 import React from 'react';
-import ShowIndex from './ShowIndex';
+import ShowFavoritesList from './ShowFavoritesList';
 
 const ShowFavorites = props => {
   const mapFavorites = props.myFavorites.map((restaurant, index) => {
     return (
-      <div className='favBackground' key={index}>
-        <ShowIndex
+      <div key={index}>
+        <ShowFavoritesList
           addToFavorites={props.addToFavorites}
           deleteRestaurant={props.deleteRestaurant}
           restaurant={restaurant}
