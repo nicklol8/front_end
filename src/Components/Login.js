@@ -41,9 +41,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className='backgroundUser'>
-      <header className='header1'>FOODSO</header>
-       
-        <form  className='user' onSubmit={evt => this.handleSubmit(evt)}>
+        <form className='user' onSubmit={evt => this.handleSubmit(evt)}>
           <input
             type='text'
             name='username'
