@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import ShowIndex from './ShowIndex';
+import DisplayFiltered from './DisplayFiltered';
 
 class FilterByTheme extends Component {
   constructor() {
     super();
     this.state = {
-      theme: ''
+      theme: '',
+      eachRestaurant: []
     };
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.filterRestaurants = this.filterRestaurants.bind(this);
   }
 
   filterRestaurants(evt) {
@@ -15,11 +17,8 @@ class FilterByTheme extends Component {
     const filterThemes = this.props.allRestaurants.filter(eachRestaurant => {
       if (this.state.theme === eachRestaurant.theme[0]) {
         console.log('filtered', eachRestaurant);
-        return (
-          <div>
-            <ShowIndex restaurant={eachRestaurant} />
-          </div>
-        );
+        this.setState({ eachRestaurant: eachRestaurant });
+        return eachRestaurant;
       }
     });
   }
@@ -43,6 +42,7 @@ class FilterByTheme extends Component {
           />
           <button type='submit'>Filter</button>
         </form>
+        <DisplayFiltered filtered={this.state.eachRestaurant} />
       </div>
     );
   }

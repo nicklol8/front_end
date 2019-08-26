@@ -32,11 +32,22 @@ class ShowIndex extends React.Component {
           <div className='col-6'>
             <h2>{restaurant.name}</h2>
             <p>{restaurant.address}</p>
-            <p>{allThemes}</p> <p>{restaurant.url}</p>
+            <p>{allThemes}</p>
+            <a href={restaurant.url}>
+              {' '}
+              <p>{restaurant.url}</p>
+            </a>
             <p>{restaurant.phone}</p>
             <button onClick={() => this.props.deleteRestaurant(restaurant._id)}>
               {' '}
               Delete
+            </button>
+            {/* <p>{allThemes}</p> */}
+            {/* <p>{restaurant.url}</p> */}
+            {/* <p>{restaurant.phone}</p> */}
+            {/* <button onClick={() => this.props.deleteRestaurant(restaurant._id)}> Delete</button> */}
+            <button onClick={() => this.props.addToFavorites(restaurant)}>
+              Add to favorites
             </button>
             <button onClick={this.handleMenuButton}>Menu</button>
           </div>
