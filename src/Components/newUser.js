@@ -39,9 +39,7 @@ class NewUser extends React.Component {
   render() {
     return (
       <div className='backgroundUser'>
-      <header className='header1'>FOODSO</header>
-       
-        <form  className='user' onSubmit={this.handleSubmit}>
+        <form className='user' onSubmit={this.handleSubmit}>
           <label htmlFor='username' />
           <input
             type='text'
