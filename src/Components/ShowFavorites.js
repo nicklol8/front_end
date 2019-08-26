@@ -14,7 +14,7 @@ const ShowFavorites = props => {
       </div>
     );
   });
-  return <div>{mapFavorites}</div>;
+  return <div className='favBackground'>{mapFavorites}</div>;
 };
 
 export default ShowFavorites;

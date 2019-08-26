@@ -139,12 +139,11 @@ class App extends Component {
 
     const loggedIn = this.state.isLoggedIn ? (
       <h1>Welcome Back {this.state.currentUser.name}</h1>
-    ) : (
-      <h2>Please Log In</h2>
-    );
+    ) : null;
     return (
       <Router>
         <div className='App'>
+          <header className='header1'>FOODSO</header>
           <Link to='/restaurants'>
             <button className='coverButton'>Restaurants</button>
           </Link>
@@ -153,9 +152,12 @@ class App extends Component {
           </Link>
           <Link to='/login'>
             <button className='coverButton'>Log IN</button>
+          <Link to='/favorites'>
+            <button className='coverButton'>Show Favorites</button>
           </Link>
-          <Link to='/favorites'>Show Favorites</Link>
-          <Link to='/filter'>Filter by Food Type</Link>
+          <Link to='/filter'>
+            <button className='coverButton'>Filter by Food Type</button>
+          </Link>
           {loggedIn}
           <Route path='/' exact component={Cover} />
           <Route

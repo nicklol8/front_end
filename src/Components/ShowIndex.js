@@ -26,7 +26,11 @@ class ShowIndex extends React.Component {
       <div className='container '>
         <div className='row butter'>
           <div className='col-6'>
-            <img className='img1 banana flutter' src={restaurant.image} />
+            <img
+              className='img1 banana flutter'
+              src={restaurant.image}
+              alt=''
+            />
           </div>
 
           <div className='col-6 butter '>
@@ -47,7 +51,6 @@ class ShowIndex extends React.Component {
         </div>
 
         <div className='card  '>{showMenu}</div>
-
       </div>
     );
   }
