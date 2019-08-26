@@ -34,7 +34,6 @@ class App extends Component {
     this.addToFavorites = this.addToFavorites.bind(this);
     this.handleAddToFavorites = this.handleAddToFavorites.bind(this);
     this.findOneToDelete = this.findOneToDelete.bind(this);
-
   }
 
   async getAllRestaurants() {
@@ -94,7 +93,6 @@ class App extends Component {
     this.handleAddToFavorites();
   }
 
-
   findOneToDelete(restaurant) {
     const thisRestaurant = restaurant;
     const copyRestaurants = this.state.currentUser.favorites;
@@ -148,17 +146,16 @@ class App extends Component {
       <Router>
         <div className='App'>
           <Link to='/restaurants'>
-            <button className="coverButton">Restaurants</button>
+            <button className='coverButton'>Restaurants</button>
           </Link>
           <Link to='/register'>
-            <button className="coverButton">Sign up</button>
+            <button className='coverButton'>Sign up</button>
           </Link>
           <Link to='/login'>
-            <button className="coverButton">Log IN</button>
+            <button className='coverButton'>Log IN</button>
           </Link>
           <Link to='/favorites'>Show Favorites</Link>
           <Link to='/filter'>Filter by Food Type</Link>
-          {loggedIn}
           {loggedIn}
           <Route path='/' exact component={Cover} />
           <Route
@@ -193,7 +190,6 @@ class App extends Component {
             )}
           />
           <Route
-
             path='/favorites'
             render={props => (
               <ShowFavorites
