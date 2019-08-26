@@ -10,7 +10,7 @@ import Login from './Components/Login.js';
 import ShowAllRestaurants from './Components/ShowAllRestaurants.js';
 import Cover from './Components/Cover';
 import User from './Components/User';
-import ShowFavorites from './Components/ShowFavorites';
+import showfavorites from './Components/showfavorites';
 
 let baseURL = 'http://localhost:3003';
 
@@ -160,7 +160,7 @@ class App extends Component {
           <Route
             path='/favorites'
             render={props => (
-              <ShowFavorites
+              <showfavorites
                 {...props}
                 addToFavorites={this.addToFavorites}
                 myFavorites={this.state.currentUser.favorites}
