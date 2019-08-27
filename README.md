@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Idea 
+A app designed for users to find local restaurants. They are able to log in and create a user, they can also add a restaurant to their favorites and it will be saved. The front end is made with react and designed using a mix of CSS and Bootstrap. 
+[Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
